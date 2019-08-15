@@ -28,6 +28,7 @@ defmodule Weather.Interfaces.CLI do
   end
 
   defp process(location) do
-    IO.puts location
+    location
+    |> Weather.App.Controllers.Forecast.fetch
   end
 end
