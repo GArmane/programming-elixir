@@ -1,18 +1,17 @@
 defmodule Weather do
   @moduledoc """
-  Documentation for Weather.
+  Weather application entry point.
   """
 
   @doc """
-  Hello world.
+  Initializes the application
 
   ## Examples
 
-      iex> Weather.hello()
-      :world
+      iex> Weather.start()
 
   """
-  def hello do
-    :world
+  def main(argv) do
+    argv
   end
 end
