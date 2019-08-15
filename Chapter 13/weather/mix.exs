@@ -8,7 +8,7 @@ defmodule Weather.MixProject do
       url: "https://github.com/GArmane/programming-elixir/tree/master/Chapter%2013/weather",
       version: "0.1.0",
       elixir: "~> 1.8",
-      escript: escript_config,
+      escript: escript_config(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
