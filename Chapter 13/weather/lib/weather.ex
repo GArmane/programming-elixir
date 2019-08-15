@@ -12,6 +12,6 @@ defmodule Weather do
 
   """
   def main(argv) do
-    argv
+    Weather.Interfaces.CLI.run argv
   end
 end
