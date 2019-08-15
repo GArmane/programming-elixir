@@ -4,6 +4,8 @@ defmodule Weather.MixProject do
   def project do
     [
       app: :weather,
+      name: "Weather",
+      url: "https://github.com/GArmane/programming-elixir/tree/master/Chapter%2013/weather",
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
