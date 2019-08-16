@@ -3,6 +3,8 @@ defmodule Weather do
   Weather application entry point.
   """
 
+  alias Weather.Interfaces.CLI
+
   @doc """
   Initializes the application
 
@@ -12,6 +14,7 @@ defmodule Weather do
 
   """
   def main(argv) do
-    Weather.Interfaces.CLI.run argv
+    argv
+    |> CLI.run
   end
 end

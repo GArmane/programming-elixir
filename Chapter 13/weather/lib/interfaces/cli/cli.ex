@@ -4,6 +4,8 @@ defmodule Weather.Interfaces.CLI do
   processing pipeline.
   """
 
+  alias Weather.App.Controllers.Forecast
+
   def run(argv) do
     argv
     |> parse_args
@@ -29,6 +31,6 @@ defmodule Weather.Interfaces.CLI do
 
   defp process(location) do
     location
-    |> Weather.App.Controllers.Forecast.fetch
+    |> Forecast.getWeather
   end
 end
