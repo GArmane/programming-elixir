@@ -17,7 +17,7 @@ defmodule Weather.Infra.Services.NOAAService do
     {:error, reason: "Server responded with #{status}" }
   end
 
-  defp handle_response({ :error, %HTTPoison.Error{ reason: reason, body: response } }) do
+  defp handle_response({ :error, %HTTPoison.Error{ reason: reason } }) do
     {:error, reason }
   end
 
