@@ -67,7 +67,7 @@ defmodule Weather.Interfaces.CLI.Printer do
     """
   end
 
-  def print({ :error, reason }) do
+  def print({ :error, [reason: reason] }) do
     IO.puts "Error: #{reason}"
   end
 end
