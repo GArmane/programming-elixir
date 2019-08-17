@@ -1,5 +1,10 @@
 defmodule Weather.App.Parsers.XMLParser do
-  def parse(xml) do
-    xml
+  alias Weather.Domain.Entities.NOAAObservation
+
+  import SweetXml
+
+  def parse(doc) do
+    doc
+    |> xmap(NOAAObservation.xml_mapping)
   end
 end
