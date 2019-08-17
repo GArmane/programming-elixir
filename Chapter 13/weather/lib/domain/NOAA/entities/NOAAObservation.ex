@@ -1,4 +1,4 @@
-defmodule Weather.Domain.Entities.NOAAObservation do
+defmodule Weather.Domain.NOAA.Entities.Observation do
   import SweetXml
 
   defstruct [
