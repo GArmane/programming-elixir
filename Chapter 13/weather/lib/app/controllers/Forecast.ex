@@ -6,6 +6,7 @@ defmodule Weather.App.Controllers.Forecast do
   defp handle_response({ :ok, response }) do
     response
     |> XMLParser.parse(NOAAObservation.xml_mapping)
+    |> NOAAObservation.from_mapping(:xml)
   end
 
   defp handle_response(response), do: response
