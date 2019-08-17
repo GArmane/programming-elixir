@@ -1,16 +1,6 @@
 defmodule Weather.Interfaces.CLI do
-  @moduledoc """
-  Handle command line parsing and dispatch to the
-  processing pipeline.
-  """
-
+  alias Weather.Interfaces.CLI.Printer
   alias Weather.App.Controllers.Forecast
-
-  def run(argv) do
-    argv
-    |> parse_args
-    |> process
-  end
 
   defp parse_args(argv) do
     parse = OptionParser.parse(argv, switches: [help: :boolean],
@@ -32,5 +22,12 @@ defmodule Weather.Interfaces.CLI do
   defp process(location) do
     location
     |> Forecast.getWeather
+  end
+
+  def run(argv) do
+    argv
+    |> parse_args
+    |> process
+    |> Printer.print
   end
 end
