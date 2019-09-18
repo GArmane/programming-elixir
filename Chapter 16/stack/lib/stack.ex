@@ -1,4 +1,4 @@
-defmodule OtpServers1.Stack do
+defmodule Stack do
   use GenServer
 
   def init(state) do

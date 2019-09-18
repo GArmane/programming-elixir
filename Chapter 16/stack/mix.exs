@@ -1,9 +1,9 @@
-defmodule OtpServers1.MixProject do
+defmodule Stack.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :otp_servers_1,
+      app: :stack,
       version: "0.1.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
