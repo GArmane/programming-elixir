@@ -15,6 +15,12 @@ defmodule Stack do
     { :noreply, [item | state] }
   end
 
+  def terminate(reason, state) do
+    IO.puts "Terminating..."
+    IO.puts "Reason: #{inspect reason}"
+    IO.puts "State: #{inspect state}"
+  end
+
   # External API
 
   def start_link(state) do
