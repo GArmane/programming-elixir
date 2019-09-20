@@ -1,8 +1,8 @@
 defmodule Sequence.Server do
-  use GenServer
   require Logger
+  use GenServer
 
-  @vsn "0"
+  @vsn "1"
 
   defmodule State, do: defstruct current_number: 0, stash_pid: nil, delta: 1
 
@@ -33,16 +33,16 @@ defmodule Sequence.Server do
   end
 
   def terminate(_reason, state) do
-    Sequence.Stash.save_value state.stash_pid, state.current_number
+    Sequence.Stash.save_value state
   end
 
-  def code_change("0", old_state = { current_number, stash_pid }, _extra) do
+  def code_change("1", old_state = { current_number, stash_pid }, _extra) do
     new_state = %State{
       current_number: current_number,
       stash_pid: stash_pid,
       delta: 1
     }
-    Logger.info "Changing code from 0 to 1"
+    Logger.info "Changing code from 1 to 2"
     Logger.info inspect(old_state)
     Logger.info inspect(new_state)
     {:ok, new_state}
