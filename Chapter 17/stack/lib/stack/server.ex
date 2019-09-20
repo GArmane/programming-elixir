@@ -3,19 +3,28 @@ defmodule Stack.Server do
 
   # GenServer interface
 
-  def init(state) do
-    { :ok, state }
+  def handle_call(:pop, _from, { [head | tail], stash_pid}) do
+    { :reply, head, {tail, stash_pid}}
   end
 
-  def handle_call(:pop, _from, [head | tail]) do
-    { :reply, head, tail }
+  def handle_cast({:push, item}, { stack, stash_pid }) do
+    { :noreply, {[item | stack], stash_pid}}
   end
 
-  def handle_cast({:push, item}, state) do
-    { :noreply, [item | state] }
+  def init(stash_pid) do
+    current_stash = Stack
+      .Stash
+      .get_value(stash_pid)
+
+    {:ok, {current_stash, stash_pid}}
   end
 
   def terminate(reason, state) do
+    {current_stash, stash_pid} = state
+    Stack
+      .Stash
+      .save_value(stash_pid, current_stash)
+
     IO.puts "Terminating..."
     IO.puts "Reason: #{inspect reason}"
     IO.puts "State: #{inspect state}"

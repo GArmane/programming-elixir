@@ -3,12 +3,9 @@ defmodule Stack.Application do
 
   use Application
 
-  def start(_type, _args) do
-    children = [
-      { Stack.Server, [1, 2, 3, 4, 5] }
-    ]
-
-    opts = [strategy: :one_for_one, name: Stack.Supervisor]
-    Supervisor.start_link(children, opts)
+  def start(_type, _arg) do
+    {:ok, _pid} = Stack
+      .Supervisor
+      .start_link([])
   end
 end
